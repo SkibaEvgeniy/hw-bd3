@@ -17,7 +17,7 @@ CREATE TABLE IF NOT EXISTS genreperformers (
 CREATE TABLE IF NOT EXISTS album_name (
 	album_name_id SERIAL PRIMARY KEY,
 	name VARCHAR(80) NOT NULL,
-	year_of_production DATE NOT NULL
+	year_of_production INTEGER NOT NULL
 );
 
 CREATE TABLE IF NOT EXISTS performersalbum (
@@ -29,14 +29,14 @@ CREATE TABLE IF NOT EXISTS performersalbum (
 CREATE TABLE IF NOT EXISTS track_name (
 	track_name_id SERIAL PRIMARY KEY,
 	name VARCHAR(80) NOT NULL,
-	length NUMERIC NOT null,
+	length NUMERIC NOT NULL,
 	album_name_id INTEGER REFERENCES album_name(album_name_id)
 );
 
 CREATE TABLE IF NOT EXISTS collection (
-	collection_id SERIAL PRIMARY key,
+	collection_id SERIAL PRIMARY KEY,
 	name VARCHAR(80) NOT NULL,
-	year_of_production DATE NOT null
+	year_of_production INTEGER NOT NULL
 );
 
 CREATE TABLE IF NOT EXISTS collectiontrack (
@@ -44,6 +44,3 @@ CREATE TABLE IF NOT EXISTS collectiontrack (
 	track_name_id iNTEGER REFERENCES track_name(track_name_id),
 	CONSTRAINT pk2 PRIMARY KEY (collection_id, track_name_id)
 );
-
-
---select * from musical_genres
